@@ -18,5 +18,13 @@
     <ClCompile Include="..\CPP\MyC++.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\CPP\Vector.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Header\Vector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
