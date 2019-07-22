@@ -5,7 +5,29 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	using namespace std;
+	char unit[3];
+	double longnum;
+	cout << "输入长度:" << endl;
+	cin >> longnum;
+	cout << "输入单位（cm或yd）:" << endl;
+	cin >> unit;
+
+
+	if (strcmp(unit, "cm") == 0)
+	{
+		longnum *= 0.0109361;
+		cout << "转换结果：" << longnum << "yd" << endl;
+	}
+	else if (strcmp(unit, "yd") == 0)
+	{
+		longnum *= 91.44;
+		cout << "转换结果：" << longnum << "cm" << endl;
+	}
+	else
+	{
+		cout << "不支持该单位！" << endl;
+	}
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
