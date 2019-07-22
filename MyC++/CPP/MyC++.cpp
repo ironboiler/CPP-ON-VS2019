@@ -2,10 +2,81 @@
 //
 
 #include <iostream>
+#include <string>
+
+using namespace std;
+
+class account {
+	string name;
+	uint32_t number;
+	uint32_t money;
+public:
+	account(const string& iptname, uint32_t iptnumber, uint32_t iptmoney)
+	{
+		name = iptname;
+		number = iptnumber;
+		money = iptmoney;
+	}
+	~account(void)
+	{
+		cout << "delet " << name << endl;
+	}
+	void showinfo(void)
+	{
+		cout << "name:" << name << endl;
+		cout << "number:" << number << endl;
+		cout << "money:" << money << endl;
+	}
+	void savemoney(uint32_t sm)
+	{
+		money += sm;
+		showinfo();
+	}
+	void takemoney(uint32_t tm)
+	{
+		if (money >= tm)
+		{
+			money -= tm;
+			showinfo();
+		}
+		else
+			cout << "Your balance is insufficient!Your balance is :" << money << endl;
+	}
+};
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	account bank("江戸川沢民", 10086, 50000);
+	int cmd;
+	uint32_t save, take;
+	bool quit = false;
+	while (!quit)
+	{
+		cout << "Welcome to bank!" << endl;
+		cout << "Input 1 for save money;Input 2 for take money;Input 3 for show your account;Input 4 for quit" << endl;
+		cin >> cmd;
+		switch (cmd)
+		{
+		case 1:
+			cout << "How much do you want to save?" << endl;
+			cin >> save;
+			bank.savemoney(save);
+			break;
+		case 2:
+			cout << "How much do you want to take?" << endl;
+			cin >> take;
+			bank.takemoney(take);
+			break;
+		case 3:
+			bank.showinfo();
+			break;
+		case 4:
+			quit = true;
+			break;
+		}
+		cout << endl;
+	}
+	bank.~account();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
