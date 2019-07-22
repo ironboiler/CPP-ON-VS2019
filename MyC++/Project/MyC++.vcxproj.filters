@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyC++.cpp">
+    <ClCompile Include="..\CPP\MyC++.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
