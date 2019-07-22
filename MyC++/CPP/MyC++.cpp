@@ -2,10 +2,45 @@
 //
 
 #include <iostream>
+#include <iostream>
+#include <math.h>
+
+float get_BMI(float tall, float weight);
+void judge_health(float BMI);
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	float tall_m, weight_kg, BMI;
+
+	cout << "请输入您的身高（单位：米）：" << endl;
+	cin >> tall_m;
+	cout << "请输入您的体重（单位：千克）：" << endl;
+	cin >> weight_kg;
+
+	BMI = get_BMI(tall_m, weight_kg);
+
+	cout << "您的BMI指数为：" << BMI << endl;
+
+	judge_health(BMI);
+}
+
+float get_BMI(float tall, float weight)
+{
+	return weight / pow(tall, 2);
+}
+
+void judge_health(float BMI)
+{
+	if (BMI <= 18.5)
+		cout << "您的体重偏低" << endl;
+	else if (BMI > 18.5 && BMI <= 24.0)
+		cout << "您的体重正常" << endl;
+	else if (BMI > 24.0 && BMI <= 28.0)
+		cout << "您的体重偏重" << endl;
+	else
+		cout << "您的体重超重" << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
