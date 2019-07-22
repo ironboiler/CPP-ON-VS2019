@@ -2,10 +2,56 @@
 //
 
 #include <iostream>
+#include <math.h>
+#include <iomanip>
+
+float get_tex(int money);
+bool tex_fun(void);
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	while (1)
+	{
+		if (tex_fun() == false)
+			break;
+	}
+}
+
+float get_tex(int money)
+{
+	if (money > 35000)
+		return (money - 35000) * 0.2 + 4000;
+	else if (money > 15000)
+		return (money - 15000) * 0.15 + 1000;
+	else if (money > 5000)
+		return (money - 5000) * 0.1;
+	else
+		return 0;
+}
+
+bool tex_fun(void)
+{
+	char income[20];
+	cout << "Please input your income" << endl;
+	cin >> income;
+	int charnum = 0, moneysum = 0, count = 0;
+	float tex = 0;
+	for (charnum = 0; income[charnum] != '\0'; charnum++)
+	{
+		if (income[charnum]<'0' || income[charnum]>'9')
+		{
+			cout << "Illegal input" << endl;
+			return false;
+		}
+	}
+	charnum--;
+	for (count = 0; charnum >= 0; charnum--)
+		moneysum += (income[count++] - '0') * pow(10, charnum);
+	cout << "moneysum:" << moneysum << endl;
+	tex = get_tex(moneysum);
+	cout << "Your tex is " << fixed << setprecision(1) << tex << endl;
+	return true;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
